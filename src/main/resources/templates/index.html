@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://ww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임리뷰사이트</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <style type="text/css">
+        section{
+            text-align: center;
+        }
+        img{
+            width:500px;
+        }
+        #title{
+            font-size: 50px;
+        }
+        #content{
+            margin: 10px 0 20px 0;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <div class="inner">
+           <h1><a href="/html">게임리뷰</a></h1>
+           <ul>
+               <li th:if="${session.loginId == 'admin'}"><a href="/html/game/gameForm">게임등록</a></li>
+               <li><a href="/html/game/getAll">게임리스트</a></li>
+
+               <li th:if="${session.loginTag != 'YES'}" ><a href="/html/user/loginForm">로그인</a></li>
+               <li th:if="${session.loginTag == 'YES'}" ><a href="/html/user/logout">로그아웃</a></li>
+               <li th:if="${session.loginTag != 'YES'}"><a href="/html/user/userForm">회원가입</a></li>
+           </ul>
+       </div>
+    </header>
+    <section>
+        <h1 th:text="${game.title}" id="title"></h1> <br>
+        <div id="img">
+            <img th:src="${game.image}">
+        </div>
+        <div id="content">
+            <p>개발사 : <a th:text="${game.developer}"></a></p>
+            <p>장르 : <a th:text="${game.genre}"></a></p>
+            <p>출시일 : <a th:text="${game.releasedate}"></a></p>
+            <p>평점 : <a th:text="${game.score}"></a>(<a th:text="${game.scorecount}"></a>)</p>
+            <p>줄거리 : <a th:text="${game.summary}"></a></p>
+        </div>
+
+    </section>
+    <footer>
+        <div class="inner">
+            <div class="upper">
+                게임 리뷰 사이트
+            </div>
+            <div class="lower">
+                1912053 오혜성
+            </div>
+        </div>
+       
+    </footer>
+</body>
+</html>

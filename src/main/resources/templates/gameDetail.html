@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://ww.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <style type="text/css">
+        *{
+            text-align: center;
+        }
+        img{
+            width:400px;
+        }
+        #review{
+            border: 1px solid black;
+            flex:1;
+            width:30%;
+            box-sizing: border-box;
+            margin: 5px;
+        }
+        #container{
+           width: 90%;
+            margin: 10px auto;
+            display: flex;
+        }
+        p{
+            font-size: 20px;
+        }
+        .box{
+            margin: 10px 0 10px 0;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="inner">
+        <h1><a href="/html">게임리뷰</a></h1>
+        <ul>
+            <li th:if="${session.loginId == 'admin'}"><a href="/html/game/gameForm">게임등록</a></li>
+            <li><a href="/html/game/getAll">게임리스트</a></li>
+
+            <li th:if="${session.loginTag != 'YES'}" ><a href="/html/user/loginForm">로그인</a></li>
+            <li th:if="${session.loginTag == 'YES'}" ><a href="/html/user/logout">로그아웃</a></li>
+            <li th:if="${session.loginTag != 'YES'}"><a href="/html/user/userForm">회원가입</a></li>
+        </ul>
+    </div>
+</header>
+
+    <div>
+        <h1 th:text="${game.title}"></h1> <br>
+        <div id="img">
+            <img th:src="${game.image}">
+        </div>
+        <div class="box">
+            <p>개발사 : <a th:text="${game.developer}"></a></p>
+            <p>장르 : <a th:text="${game.genre}"></a></p>
+            <p>출시일 : <a th:text="${game.releasedate}"></a></p>
+            <p>평점 : <a th:text="${game.score}"></a>(<a th:text="${game.scorecount}"></a>)</p>
+            <p>줄거리 : <a th:text="${game.summary}"></a></p>
+        </div>
+        <hr/>
+        <div class="box">
+            <p>리뷰</p>
+            <div id="container">
+                <div th:each="list : ${reviews}" id="review">
+                    <p>작성자 : <a th:text="${list.user_name}"></a></p>
+                    <p>평점 : <a th:text="${list.score}"></a></p>
+                    <p>코멘트 : <a th:text="${list.comment}"></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer>
+    <div class="inner">
+        <div class="upper">
+            게임 리뷰 사이트
+        </div>
+        <div class="lower">
+            1912053 오혜성
+        </div>
+    </div>
+</footer>
+</body>
+</html>

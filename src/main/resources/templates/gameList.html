@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://ww.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <style type="text/css">
+        img{
+            width:100px;
+        }
+        td{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="inner">
+        <h1><a href="/html">게임리뷰</a></h1>
+        <ul>
+            <!--               <li><a href="/file/uploadForm">파일Upload</a></li>-->
+            <li th:if="${session.loginId == 'admin'}"><a href="/html/game/gameForm">게임등록</a></li>
+            <li><a href="/html/game/getAll">게임리스트</a></li>
+
+            <li th:if="${session.loginTag != 'YES'}" ><a href="/html/user/loginForm">로그인</a></li>
+            <li th:if="${session.loginTag == 'YES'}" ><a href="/html/user/logout">로그아웃</a></li>
+            <li th:if="${session.loginTag != 'YES'}"><a href="/html/user/userForm">회원가입</a></li>
+        </ul>
+    </div>
+</header>
+
+  <h1>게임 목록</h1>
+  <hr/>
+  <table border="1">
+      <tr>
+          <td>아이디</td>
+          <td>제목</td>
+          <td>개발사</td>
+          <td>장르</td>
+          <td>출시일</td>
+          <td>평점</td>
+          <td>평점수</td>
+          <td>이미지</td>
+          <td>자세히</td>
+          <td></td>
+      </tr>
+      <tr th:each="list : ${games}">
+          <td th:text="${list.id}"></td>
+          <td th:text="${list.title}"></td>
+          <td th:text="${list.developer}"></td>
+          <td th:text="${list.genre}"></td>
+          <td th:text="${list.releasedate}"></td>
+          <td th:text="${list.score}"></td>
+          <td th:text="${list.scorecount}"></td>
+          <td><img th:src="${list.image}"></td>
+          <td><a th:href="@{http://localhost:8080/html/game/getOneDetail(id=${list.id})}">상세보기</a></td>
+          <td><a th:href="@{http://localhost:8080/html/game/addReview(id=${list.id})}">리뷰쓰기</a></td>
+      </tr>
+  </table>
+
+  <footer>
+      <div class="inner">
+          <div class="upper">
+              게임 리뷰 사이트
+          </div>
+          <div class="lower">
+              1912053 오혜성
+          </div>
+      </div>
+  </footer>
+</body>
+</html>

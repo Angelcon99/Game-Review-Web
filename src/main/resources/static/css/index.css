@@ -1,0 +1,97 @@
+/* 공통 */
+* {
+    margin: 0; padding: 0;
+}
+ul,ol {list-style: none;}
+a { text-decoration: none; color : black;}
+
+.inner {
+    width: 1180px;
+    margin : 0 auto;
+    position: relative;
+}
+.gaundae {
+   margin : 50px 0;
+   width: 400px; 
+  /* height: 500px; */ 
+   background-color: yellow;
+   margin: 0 auto;
+}
+/* header */
+header {
+    width: 100%;
+    background-color: orange;
+}
+header .inner {
+    height: 100px;
+    position : relative;
+}
+header .inner h1 {
+    position: absolute;
+    left: 50px;
+    bottom : 10px;
+}
+
+header ul {
+    display: flex;
+    position: absolute;
+    right: 50px;
+    bottom : 10px;
+}
+header ul li {
+    border : 1px solid black;
+    margin: 0 5px 0 5px
+}
+header ul li a {
+    padding: 10px 20px;
+    font-weight: 700;
+}
+header ul li a:hover {
+    background-color: brown;
+    border-radius: 5px;
+}
+
+/* section */
+
+section {
+    width: 100%;
+}
+section .inner {
+    /* width: 100%; */
+    /* height: 500px; */
+}
+section .pic {
+    width: 100%;
+    height: 450px;
+    margin: 0 auto;
+}
+section .pic ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section .pic ul li {}
+section .pic ul li img {
+    /* width: 60%; */
+    width: 400px;
+    height: 450px;
+    object-fit: contain;
+}
+section .inner p {
+    margin-top: 30px;
+}
+
+
+/* footer */
+footer {
+    width: 100%;
+    height: 100px;
+    background-color: #a18871;
+}
+footer .inner {
+    /* background-color: #a18871; */
+}
+footer .upper {
+    padding-top: 20px;
+}
+footer .lower {}

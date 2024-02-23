@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://ww.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+<header>
+    <div class="inner">
+        <h1><a href="/html">게임리뷰</a></h1>
+        <ul>
+            <li th:if="${session.loginId == 'admin'}"><a href="/html/game/gameForm">게임등록</a></li>
+            <li><a href="/html/game/getAll">게임리스트</a></li>
+
+            <li th:if="${session.loginTag != 'YES'}" ><a href="/html/user/loginForm">로그인</a></li>
+            <li th:if="${session.loginTag == 'YES'}" ><a href="/html/user/logout">로그아웃</a></li>
+            <li th:if="${session.loginTag != 'YES'}"><a href="/html/user/userForm">회원가입</a></li>
+        </ul>
+    </div>
+</header>
+
+  <h1>로그인</h1>
+  <hr/>
+  <form method="post" action="/html/user/loginCheck">
+      이메일 : <input tpye="text" name="email"><br/>
+      비밀번호 : <input tpye="text" name="password"><br/>
+      <input type="submit" value="로그인">
+  </form>
+
+<footer>
+    <div class="inner">
+        <div class="upper">
+            게임 리뷰 사이트
+        </div>
+        <div class="lower">
+            1912053 오혜성
+        </div>
+    </div>
+</footer>
+</body>
+</html>
